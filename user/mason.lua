@@ -1,23 +1,3 @@
-vim.g.mapleader = ''
-vim.g.maplocalleader = ''
-
--- disable netrw at the very start of your init.lua (strongly advised)
--- this disables Explore
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
-
-require "user.plugins"
-require "user.options"
-require "user.keymaps"
-require "user.lsp_signature"
-require "user.luasnip"
-require "user.mason"
-require "user.nvim-cmp"
-require "user.nvim-tree"
-require "user.nvim-treesiter"
-require "user.telescope"
-
-
 -- LSP settings.
 --  This function gets run when an LSP connects to a particular buffer.
 local on_attach = function(_, bufnr)
@@ -45,10 +25,6 @@ local on_attach = function(_, bufnr)
   nmap('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
   nmap('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
 
-  -- See `:help K` for why this keymap
-  nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
-  nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
-
   -- Lesser used LSP functionality
   nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
   nmap('<leader>wa', vim.lsp.buf.add_workspace_folder, '[W]orkspace [A]dd Folder')
@@ -62,7 +38,6 @@ local on_attach = function(_, bufnr)
     vim.lsp.buf.format()
   end, { desc = 'Format current buffer with LSP' })
 end
-
 -- Enable the following language servers
 --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
 --
@@ -70,8 +45,9 @@ end
 --  the `settings` field of the server config. You must look up that documentation yourself.
 local servers = {
   -- clangd = {},
-  -- gopls = {},
-  -- pyright = {},
+  gopls = {},
+  pyright = {},
+  terraformls = {},
   -- rust_analyzer = {},
   -- tsserver = {},
 
@@ -82,9 +58,8 @@ local servers = {
     },
   },
 }
-
 -- Setup neovim lua configuration
-require('neodev').setup()
+--:require('neodev').setup()
 
 -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -106,7 +81,3 @@ mason_lspconfig.setup_handlers {
     }
   end,
 }
-
-
--- The line beneath this is called `modeline`. See `:help modeline`
--- vim: ts=2 sts=2 sw=2 et
