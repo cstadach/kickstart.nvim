@@ -46,7 +46,7 @@ end
 --
 --  Add any additional override configuration in the following tables. They will be passed to
 --  the `settings` field of the server config. You must look up that documentation yourself.
-local servers = {
+local lsp_servers = {
   -- clangd = {},
   gopls = {},
   pyright = {},
@@ -72,7 +72,7 @@ capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 local mason_lspconfig = require 'mason-lspconfig'
 
 mason_lspconfig.setup {
-  ensure_installed = vim.tbl_keys(servers),
+  ensure_installed = vim.tbl_keys(lsp_servers),
 }
 
 mason_lspconfig.setup_handlers {
@@ -80,7 +80,7 @@ mason_lspconfig.setup_handlers {
     require('lspconfig')[server_name].setup {
       capabilities = capabilities,
       on_attach = on_attach,
-      settings = servers[server_name],
+      settings = lsp_servers[server_name],
     }
   end,
 }
