@@ -51,7 +51,11 @@ local lsp_servers = {
   gopls = {},
   pyright = {},
   terraformls = {},
-  solargraph = {}, -- ruby lsp
+  solargraph = {
+    settings = {
+      solargraph = { }
+    }
+  }, -- ruby lsp
   -- rust_analyzer = {},
   -- tsserver = {},
 
