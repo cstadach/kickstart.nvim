@@ -60,7 +60,7 @@ require('lazy').setup({
   {
     'fatih/vim-go',  build = ':GoUpdateBinaries',
     config = function()
-      vim.g.go_def_mode  = 'gpls'
+      vim.g.go_def_mode  = 'gopls'
     end,
   },
   -- Detect tabstop and shiftwidth automatically
