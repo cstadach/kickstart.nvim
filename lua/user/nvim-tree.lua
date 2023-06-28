@@ -18,3 +18,5 @@ nvim_tree.setup {
     signcolumn = 'yes',
   },
 }
+
+vim.keymap.set('n', '<leader>tt', "<cmd>NvimTreeToggle<cr>", {silent = true})
