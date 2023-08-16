@@ -23,7 +23,12 @@ require('lazy').setup({
   -- NOTE: First, some plugins that don't require any configuration
 
   'tpope/vim-surround',
-  'hashivim/vim-terraform',
+  {
+    'hashivim/vim-terraform',
+    config = function ()
+      vim.g.terraform_fmt_on_save  = 1
+    end
+  },
   'tpope/vim-dispatch',
   'tpope/vim-unimpaired',
   'tpope/vim-abolish',
