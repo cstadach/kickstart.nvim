@@ -1,12 +1,14 @@
--- [[ Basic Keymaps ]]
-
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
-vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
+local map = vim.keymap.set
+local opts = { noremap = true, silent = true }
+-- [[ Basic Keymaps ]]
+
+map({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
 -- Remap for dealing with word wrap
-vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+map('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+map('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
@@ -20,15 +22,20 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 -- clear search on return
-vim.keymap.set('n', '<cr><cr>', ':nohlsearch<cr>')
+map('n', '<cr><cr>', ':nohlsearch<cr>')
 -- Diagnostic keymaps
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = "Go to next diagnostic message" })
-vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
+map('n', '[d', vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })
+map('n', ']d', vim.diagnostic.goto_next, { desc = "Go to next diagnostic message" })
+map('n', '<leader>e', vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
+map('n', '<leader>q', vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
 
  -- Easily Switch Windows
-vim.keymap.set('n', '<C-j>', '<C-w><C-j>')
-vim.keymap.set('n', '<C-k>', '<C-w><C-k>')
-vim.keymap.set('n', '<C-l>', '<C-w><C-l>')
-vim.keymap.set('n', '<C-h>', '<C-w><C-h>')
+map('n', '<C-j>', '<C-w><C-j>')
+map('n', '<C-k>', '<C-w><C-k>')
+map('n', '<C-l>', '<C-w><C-l>')
+map('n', '<C-h>', '<C-w><C-h>')
+
+-- Magic buffer-picking mode
+map('n', '<C-p>', '<Cmd>BufferPick<CR>', opts)
+-- Sort automatically by...
+map('n', '<Space>bb', '<Cmd>BufferOrderByBufferNumber<CR>', opts)
