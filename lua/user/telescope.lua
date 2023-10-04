@@ -5,7 +5,9 @@ end
 -- [[ Configure Telescope ]]
 -- See `:help telescope` and `:help telescope.setup()`
 telescope.setup {
+  file_ignore_patterns = {".git"};
   defaults = {
+  vimgrep_arguments = { 'rg', '--hidden', '--color=never', '--no-heading', '--with-filename', '--line-number', '--column', '--smart-case'};
     mappings = {
       i = {
         ['<C-u>'] = false,
