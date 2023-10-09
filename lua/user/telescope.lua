@@ -7,7 +7,7 @@ end
 telescope.setup {
   file_ignore_patterns = {".git"};
   defaults = {
-  vimgrep_arguments = { 'rg', '--hidden', '--color=never', '--no-heading', '--with-filename', '--line-number', '--column', '--smart-case'};
+  vimgrep_arguments = { 'rg', '--color=never', '--no-heading', '--with-filename', '--line-number', '--column', '--smart-case'};
     mappings = {
       i = {
         ['<C-u>'] = false,
