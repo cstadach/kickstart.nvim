@@ -50,7 +50,12 @@ require('lazy').setup({
     version = "*",
     dependencies = { "nvim-tree/nvim-web-devicons" },
   },
-
+  {
+    "iamcco/markdown-preview.nvim",
+    config = function()
+      vim.fn["mkdp#util#install"]()
+    end,
+  },
   {'romgrk/barbar.nvim',
     dependencies = 'nvim-tree/nvim-web-devicons',
     init = function() vim.g.barbar_auto_setup = false end,
