@@ -116,21 +116,23 @@ require('lazy').setup({
     },
   },
 
-  { -- Theme inspired by Atom
-    'navarasu/onedark.nvim',
+  {
+    'rafi/awesome-vim-colorschemes',
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme 'onedark'
+      vim.o.background='dark'
+      vim.cmd.colorscheme 'sonokai'
     end,
   },
 
   { -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
+        dependencies = { 'nvim-tree/nvim-web-devicons', 'sainnhe/sonokai' },
     -- See `:help lualine.txt`
     opts = {
       options = {
         icons_enabled = true,
-        theme = 'onedark',
+        theme = 'sonokai',
         component_separators = '|',
         section_separators = '',
       },
