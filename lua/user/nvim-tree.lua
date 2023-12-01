@@ -6,10 +6,18 @@ end
 nvim_tree.setup {
   update_focused_file = {
     enable = true,
+    update_cwd = true,
   },
   diagnostics = {
     enable = true,
     show_on_dirs = true,
+  },
+  filters = {
+    dotfiles = false,
+    git_ignored = false,
+    git_clean = false,
+    no_buffer = false,
+    custom = { '^.git$' },
   },
 
   view = {
