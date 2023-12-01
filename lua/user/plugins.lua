@@ -29,7 +29,7 @@ require('lazy').setup({
       vim.g.terraform_fmt_on_save  = 1
     end
   },
-  'ghthor/vim-hclfmt',
+  'rhadley-recurly/vim-terragrunt',
   'tpope/vim-dispatch',
   'tpope/vim-unimpaired',
   'tpope/vim-abolish',
