@@ -6,8 +6,11 @@ end
 -- See `:help telescope` and `:help telescope.setup()`
 telescope.setup {
   file_ignore_patterns = {".git"};
+  pickers = {
+    find_files = { find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" } },
+  },
   defaults = {
-  vimgrep_arguments = { 'rg', '--color=never', '--no-heading', '--with-filename', '--line-number', '--column', '--smart-case'};
+  vimgrep_arguments = { 'rg', '--hidden', '--color=never', '--no-heading', '--with-filename', '--line-number', '--column', '--smart-case', "--glob", "!**/.git/*" };
     mappings = {
       i = {
         ['<C-u>'] = false,
