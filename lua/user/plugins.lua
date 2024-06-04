@@ -13,6 +13,9 @@ if not vim.loop.fs_stat(lazypath) then
   }
 end
 vim.opt.rtp:prepend(lazypath)
+-- disable lsp logging
+vim.lsp.set_log_level("off")
+
 
 -- NOTE: Here is where you install your plugins.
 --  You can configure plugins using the `config` key.
