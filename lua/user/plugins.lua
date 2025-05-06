@@ -118,24 +118,28 @@ require('lazy').setup({
       },
     },
   },
-
   {
-    'rafi/awesome-vim-colorschemes',
+    'catppuccin/nvim',
+    name = "catppuccin",
     priority = 1000,
     config = function()
+      require("catppuccin").setup {
+        background = { light = "latte", dark = "mocha" },
+        transparent_background = true
+      }
       vim.o.background='dark'
-      vim.cmd.colorscheme 'sonokai'
+      vim.cmd.colorscheme 'catppuccin'
     end,
   },
 
   { -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
-        dependencies = { 'nvim-tree/nvim-web-devicons', 'sainnhe/sonokai' },
+        dependencies = { 'nvim-tree/nvim-web-devicons', 'catppuccin/nvim' },
     -- See `:help lualine.txt`
     opts = {
       options = {
         icons_enabled = true,
-        theme = 'sonokai',
+        theme = 'catppuccin',
         component_separators = '|',
         section_separators = '',
       },
