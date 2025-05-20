@@ -144,6 +144,14 @@ require('lazy').setup({
       },
     },
   },
+  { "EdenEast/nightfox.nvim",
+    config = function()
+      require('nightfox').setup({
+      })
+      vim.o.background='dark'
+      vim.cmd.colorscheme 'nightfox'
+    end
+  },
   {
     'catppuccin/nvim',
     name = "catppuccin",
@@ -151,10 +159,8 @@ require('lazy').setup({
     config = function()
       require("catppuccin").setup {
         background = { light = "latte", dark = "mocha" },
-        transparent_background = true
       }
-      vim.o.background='dark'
-      vim.cmd.colorscheme 'catppuccin'
+      -- vim.cmd.colorscheme 'catppuccin'
     end,
   },
 
