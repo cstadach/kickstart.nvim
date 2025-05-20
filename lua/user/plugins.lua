@@ -32,6 +32,32 @@ require('lazy').setup({
       vim.g.terraform_fmt_on_save  = 1
     end
   },
+  {
+    'github/copilot.vim',
+    config = function ()
+      vim.g.copilot_filetypes = {
+        ['*'] = false,
+        ['lua'] = true,
+        ['tf'] = true,
+        ['yaml'] = true,
+        ['hcl'] = true,
+        ['jinja'] = true,
+      }
+    end
+  },
+  {
+    "CopilotC-Nvim/CopilotChat.nvim",
+      dependencies = {
+        { "nvim-lua/plenary.nvim", branch = "master" }, -- for curl, log and async functions
+      },
+    build = "make tiktoken", -- Only on MacOS or Linux
+    config = function(_, opts)
+      require("CopilotChat").setup(opts)
+      vim.keymap.set('n', '<leader>aa', function()
+        require('CopilotChat').toggle()
+      end, { desc = 'Toggle CopilotChat' })
+  end,
+  },
   'rhadley-recurly/vim-terragrunt',
   'tpope/vim-dispatch',
   'tpope/vim-unimpaired',
